@@ -27,9 +27,11 @@ env:
     - TEST_SUBPROCESS=1
     - TEST_UNIX=1
     - TEST_TLS=1
+    - TEST_ASYNC_AWAIT=1
 install:
   - cpanm -n Cpanel::JSON::XS EV~"!= 4.28" IO::Socket::Socks IO::Socket::SSL
-  - cpanm -n Net::DNS::Native Role::Tiny Test::Pod Test::Pod::Coverage
+  - cpanm -n Net::DNS::Native Future::AsyncAwait::Frozen~">= 0.36" Role::Tiny
+  - cpanm -n Test::Pod Test::Pod::Coverage
   - cpanm -n --installdeps .
 sudo: false
 notifications:
